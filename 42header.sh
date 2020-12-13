@@ -101,18 +101,15 @@ update_header()
 	fi
 }
 
-# Change to the sources directory
-cd srcs/
+SRCDIR=srcs
+INCDIR=includes
 
 # Update headers in .c files
-for src in */**.c; do
+for src in $(find srcs -type f -name "*.c"); do
 	update_header "$src"
 done
 
-# Change to the includes directory
-cd ../includes/
-
 # Update headers in .h files
-for head in */**.h; do
+for head in $(find srcs -type f -name "*.h"); do
 	update_header "$head"
 done
