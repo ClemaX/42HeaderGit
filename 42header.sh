@@ -92,7 +92,7 @@ insert_header()
 		| cat - "$1" > .header_tmp\
 		&& mv .header_tmp "$1"
 }
-
+# update_header regular_file
 update_header()
 {
 	if has_header "$1" ; then
@@ -102,15 +102,25 @@ update_header()
 	fi
 }
 
-SRCDIR=srcs
-INCDIR=includes
+# update_headers file
+update_headers()
+{
+	for src in $(find "$1" -type f \( -name "*.c" -o -name "*.h" \)); do
+		update_header "$src"
+	done
+}
 
-# Update headers in .c files
-for src in $(find srcs -type f -name "*.c"); do
-	update_header "$src"
-done
+show_usage()
+{
+	echo "Usage: $0 [FILE]..." >&2
+	exit 1
+}
 
-# Update headers in .h files
-for head in $(find srcs -type f -name "*.h"); do
-	update_header "$head"
+if [ "$#" -eq 0 ]; then
+	show_usage
+fi
+
+
+for file in "$@"; do
+	update_headers "$file"
 done
