@@ -48,13 +48,14 @@ header_fill()
 	printf " $END\n"
 }
 
+# header_content text ascii_art
 header_content()
 {
-	printf '%s' "$START"
-	printf ' %.0s' $(eval "echo {1.."$(($PADDING_LEFT))"}")
-	printf '%-*s' "$CONTENT_WIDTH" "$1" "$ASCII_ART_WIDTH" "$2"
-	printf ' %.0s' $(eval "echo {1.."$(($PADDING_RIGHT))"}")
-	printf "%s\n" "$END"
+	printf '%s'		"$START"
+	printf ' %.0s'	$(eval "echo {1.."$(($PADDING_LEFT))"}")
+	printf '%-*s'	"$CONTENT_WIDTH" "$1" "$ASCII_ART_WIDTH" "$2"
+	printf ' %.0s'	$(eval "echo {1.."$(($PADDING_RIGHT))"}")
+	printf '%s\n'	"$END"
 }
 
 header()
@@ -64,19 +65,19 @@ header()
 		CREATED_AT=$(git_time_created $1)
 		UPDATED_AT=$(git_time_updated $1)
 
-		header_fill "$FILL" "$FILL_LENGTH"
-		header_fill " " "$FILL_LENGTH"
+		header_fill "$FILL"	"$FILL_LENGTH"
+		header_fill " "		"$FILL_LENGTH"
 
-		header_content "" "${ASCII_ART[0]}"
-		header_content "$FILENAME" "${ASCII_ART[1]}"
-		header_content "" "${ASCII_ART[2]}"
-		header_content "By: $USER <$MAIL>" "${ASCII_ART[3]}"
-		header_content "" "${ASCII_ART[4]}"
-		header_content "Created: $CREATED_AT by: $USER" "${ASCII_ART[5]}"
-		header_content "Updated: $UPDATED_AT by: $USER" "${ASCII_ART[6]}"
+		header_content ""								"${ASCII_ART[0]}"
+		header_content "$FILENAME"						"${ASCII_ART[1]}"
+		header_content ""								"${ASCII_ART[2]}"
+		header_content "By: $USER <$MAIL>"				"${ASCII_ART[3]}"
+		header_content ""								"${ASCII_ART[4]}"
+		header_content "Created: $CREATED_AT by: $USER"	"${ASCII_ART[5]}"
+		header_content "Updated: $UPDATED_AT by: $USER"	"${ASCII_ART[6]}"
 
-		header_fill " " "$FILL_LENGTH"
-		header_fill "$FILL" "$FILL_LENGTH"
+		header_fill " "		"$FILL_LENGTH"
+		header_fill "$FILL"	"$FILL_LENGTH"
 	fi
 }
 
