@@ -73,8 +73,8 @@ header()
 		header_content ""								"${ASCII_ART[2]}"
 		header_content "By: $USER <$MAIL>"				"${ASCII_ART[3]}"
 		header_content ""								"${ASCII_ART[4]}"
-		header_content "Created: $CREATED_AT by: $USER"	"${ASCII_ART[5]}"
-		header_content "Updated: $UPDATED_AT by: $USER"	"${ASCII_ART[6]}"
+		header_content "Created: $CREATED_AT by $USER"	"${ASCII_ART[5]}"
+		header_content "Updated: $UPDATED_AT by $USER"	"${ASCII_ART[6]}"
 
 		header_fill " "		"$FILL_LENGTH"
 		header_fill "$FILL"	"$FILL_LENGTH"
